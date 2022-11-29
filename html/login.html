@@ -5,13 +5,12 @@
     <title>login</title>
 </head>
 <body>
-    <h3>Please Login</h3>
+    <h3>Hello: {[{ .message | RenderMsg }]}</h3>
     <form action="http://localhost:8888/login" method="post">
         username<input type="text" name="username"><br>
         password<input type="text" name="password"><br>
         <input type="submit" value="login">
     </form>
     <a href="http://localhost:8888/register">Sign Up</a>
-    <h3>hint: {[{ .message | RenderMsg }]}</h3>
 </body>
 </html>

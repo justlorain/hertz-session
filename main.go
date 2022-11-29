@@ -6,17 +6,12 @@ import (
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"hertz-session/biz/dal"
 	"hertz-session/pkg/utils"
-	"html/template"
 )
 
 func main() {
 	dal.Init()
 	h := server.Default()
-	h.Delims("{[{", "}]}")
-	h.SetFuncMap(template.FuncMap{
-		"RenderMsg": utils.RenderMsg,
-	})
-	h.LoadHTMLGlob("html/*")
+	utils.RenderHTML(h)
 	register(h)
 	h.Spin()
 }

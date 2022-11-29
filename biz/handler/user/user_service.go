@@ -87,3 +87,7 @@ func Login(_ context.Context, c *app.RequestContext) {
 	_ = session.Save()
 	c.Redirect(http.StatusMovedPermanently, []byte("/page"))
 }
+
+func Logout(_ context.Context, c *app.RequestContext) {
+	c.Redirect(http.StatusMovedPermanently, []byte("/login"))
+}
