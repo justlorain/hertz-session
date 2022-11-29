@@ -6,12 +6,12 @@
 </head>
 <body>
     <h3>Hello: {[{ .message | BuildMsg }]}</h3>
-    <form action="http://localhost:8888/register" method="post">
+    <form action="/register" method="post">
         username<input type="text" name="username"><br>
         password<input type="text" name="password"><br>
         email<input type="text" name="email"><br>
         <input type="submit" value="register">
     </form>
-    <a href="http://localhost:8888/login">Login</a>
+    <a href="/login">Login</a>
 </body>
 </html>

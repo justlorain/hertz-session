@@ -5,13 +5,19 @@ package main
 import (
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"hertz-session/biz/dal"
+	"hertz-session/biz/mw"
 	"hertz-session/pkg/render"
 )
 
-func main() {
+func Init(h *server.Hertz) {
 	dal.Init()
+	mw.InitSession(h)
+	render.InitHTML(h)
+}
+
+func main() {
 	h := server.Default()
+	Init(h)
 	register(h)
-	render.Render(h)
 	h.Spin()
 }

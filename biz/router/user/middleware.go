@@ -4,19 +4,11 @@ package User
 
 import (
 	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/hertz-contrib/sessions"
-	"github.com/hertz-contrib/sessions/redis"
-	"hertz-session/pkg/consts"
 )
 
 func rootMw() []app.HandlerFunc {
-	store, err := redis.NewStore(consts.MaxIdleNum, consts.TCP, consts.RedisAddr, consts.RedisPasswd, []byte(consts.SecretKey))
-	if err != nil {
-		panic(err)
-	}
-	return []app.HandlerFunc{
-		sessions.Sessions(consts.HertzSession, store),
-	}
+	// your code...
+	return nil
 }
 
 func _loginMw() []app.HandlerFunc {
