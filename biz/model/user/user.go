@@ -194,7 +194,7 @@ func (p *BaseResp) String() string {
 type RegisterRequest struct {
 	Username string `thrift:"username,1" form:"username" json:"username" vd:"(len($) > 0 && len($) < 128); msg:'Illegal format'"`
 	Password string `thrift:"password,2" form:"password" json:"password" vd:"(len($) > 0 && len($) < 128); msg:'Illegal format'"`
-	Email    string `thrift:"email,3" form:"email" json:"email" vd:"(len($) > 0 && len($) < 128); msg:'Illegal format'"`
+	Email    string `thrift:"email,3" form:"email" json:"email" vd:"(len($) > 0 && len($) < 128) && email($); msg:'Illegal format'"`
 }
 
 func NewRegisterRequest() *RegisterRequest {
