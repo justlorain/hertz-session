@@ -9,7 +9,7 @@ struct BaseResp {
 
 struct RegisterRequest {
     1: string username (api.form="username", api.vd="(len($) > 0 && len($) < 128); msg:'Illegal format'")
-    2: string password (api.form="password", api.vd="(len($) > 0 && len($) < 128) && email($); msg:'Illegal format'")
+    2: string password (api.form="password", api.vd="(len($) > 0 && len($) < 128); msg:'Illegal format'")
     3: string email (api.form="email", api.vd="(len($) > 0 && len($) < 128); msg:'Illegal format'")
 }
 

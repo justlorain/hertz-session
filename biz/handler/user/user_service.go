@@ -4,15 +4,14 @@ package user
 
 import (
 	"context"
+	"github.com/cloudwego/hertz/pkg/app"
 	hutils "github.com/cloudwego/hertz/pkg/common/utils"
 	"github.com/hertz-contrib/sessions"
 	"hertz-session/biz/dal/mysql"
+	"hertz-session/biz/model/user"
 	"hertz-session/pkg/consts"
 	"hertz-session/pkg/utils"
 	"net/http"
-
-	"github.com/cloudwego/hertz/pkg/app"
-	"hertz-session/biz/model/user"
 )
 
 // Register .
@@ -23,20 +22,20 @@ func Register(_ context.Context, c *app.RequestContext) {
 	err = c.BindAndValidate(&req)
 	if err != nil {
 		c.HTML(http.StatusOK, "register.html", hutils.H{
-			"message": utils.RenderMsg(err.Error()),
+			"message": utils.BuildMsg(err.Error()),
 		})
 		return
 	}
 	users, err := mysql.FindUserByNameOrEmail(req.Username, req.Email)
 	if err != nil {
 		c.HTML(http.StatusOK, "register.html", hutils.H{
-			"message": utils.RenderMsg(err.Error()),
+			"message": utils.BuildMsg(err.Error()),
 		})
 		return
 	}
 	if len(users) != 0 {
 		c.HTML(http.StatusOK, "register.html", hutils.H{
-			"message": utils.RenderMsg(consts.RegisterErr),
+			"message": utils.BuildMsg(consts.RegisterErr),
 		})
 		return
 	}
@@ -48,7 +47,7 @@ func Register(_ context.Context, c *app.RequestContext) {
 		},
 	}); err != nil {
 		c.HTML(http.StatusOK, "register.html", hutils.H{
-			"message": utils.RenderMsg(consts.RegisterErr),
+			"message": utils.BuildMsg(consts.RegisterErr),
 		})
 		return
 	}
@@ -65,20 +64,20 @@ func Login(_ context.Context, c *app.RequestContext) {
 	err = c.BindAndValidate(&req)
 	if err != nil {
 		c.HTML(http.StatusOK, "login.html", hutils.H{
-			"message": utils.RenderMsg(err.Error()),
+			"message": utils.BuildMsg(err.Error()),
 		})
 		return
 	}
 	users, err := mysql.CheckUser(req.Username, utils.MD5(req.Password))
 	if err != nil {
 		c.HTML(http.StatusOK, "login.html", hutils.H{
-			"message": utils.RenderMsg(err.Error()),
+			"message": utils.BuildMsg(err.Error()),
 		})
 		return
 	}
 	if len(users) == 0 {
 		c.HTML(http.StatusOK, "login.html", hutils.H{
-			"message": utils.RenderMsg(consts.LoginErr),
+			"message": utils.BuildMsg(consts.LoginErr),
 		})
 		return
 	}
@@ -86,6 +85,22 @@ func Login(_ context.Context, c *app.RequestContext) {
 	session.Set(consts.Username, req.Username)
 	_ = session.Save()
 	c.Redirect(http.StatusMovedPermanently, []byte("/page"))
+}
+
+func Page(_ context.Context, c *app.RequestContext) {
+	session := sessions.Default(c)
+	username := session.Get(consts.Username)
+	if username == nil {
+		c.HTML(http.StatusOK, "page.html", hutils.H{
+			"message": utils.BuildMsg(consts.PageErr),
+		})
+		c.Redirect(http.StatusMovedPermanently, []byte("/login"))
+		return
+	}
+	c.HTML(http.StatusOK, "page.html", hutils.H{
+		"message": utils.BuildMsg(username.(string)),
+	})
+	return
 }
 
 func Logout(_ context.Context, c *app.RequestContext) {

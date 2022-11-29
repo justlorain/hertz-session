@@ -13,5 +13,6 @@ func customizedRegister(r *server.Hertz) {
 	r.GET("/ping", handler.Ping)
 
 	// your code ...
+	r.GET("/page", user.Page)
 	r.GET("/logout", user.Logout)
 }

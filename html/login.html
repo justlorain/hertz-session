@@ -5,7 +5,7 @@
     <title>login</title>
 </head>
 <body>
-    <h3>Hello: {[{ .message | RenderMsg }]}</h3>
+    <h3>Hello: {[{ .message | BuildMsg }]}</h3>
     <form action="http://localhost:8888/login" method="post">
         username<input type="text" name="username"><br>
         password<input type="text" name="password"><br>
