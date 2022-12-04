@@ -23,14 +23,14 @@ func InitHTML(h *server.Hertz) {
 	// register.html
 	h.GET("/register.html", func(ctx context.Context, c *app.RequestContext) {
 		c.HTML(http.StatusOK, "register.html", hutils.H{
-			"message": utils.BuildMsg("Please Sign Up"),
+			"message": utils.BuildMsg("Register a new membership"),
 		})
 	})
 
 	// login.html
 	h.GET("/login.html", func(ctx context.Context, c *app.RequestContext) {
 		c.HTML(http.StatusOK, "login.html", hutils.H{
-			"message": utils.BuildMsg("Please Login"),
+			"message": utils.BuildMsg("Sign in to start your session"),
 		})
 	})
 
@@ -42,7 +42,7 @@ func InitHTML(h *server.Hertz) {
 			c.HTML(http.StatusOK, "index.html", hutils.H{
 				"message": utils.BuildMsg(consts.PageErr),
 			})
-			c.Redirect(http.StatusMovedPermanently, []byte("/login"))
+			c.Redirect(http.StatusMovedPermanently, []byte("/login.html"))
 			return
 		}
 		c.HTML(http.StatusOK, "index.html", hutils.H{

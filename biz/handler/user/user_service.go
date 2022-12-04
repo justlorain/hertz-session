@@ -84,5 +84,14 @@ func Login(_ context.Context, c *app.RequestContext) {
 	session := sessions.Default(c)
 	session.Set(consts.Username, req.Username)
 	_ = session.Save()
-	c.Redirect(http.StatusMovedPermanently, []byte("/page"))
+	c.Redirect(http.StatusMovedPermanently, []byte("/index.html"))
+}
+
+// Logout .
+// @router /logout [GET]
+func Logout(_ context.Context, c *app.RequestContext) {
+	session := sessions.Default(c)
+	session.Delete(consts.Username)
+	_ = session.Save()
+	c.Redirect(http.StatusMovedPermanently, []byte("/login.html"))
 }
