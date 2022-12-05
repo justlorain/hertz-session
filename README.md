@@ -1,4 +1,4 @@
-# hertz_session (dev-version)
+# hertz-session (dev-version)
 
 ## Introduce
 
