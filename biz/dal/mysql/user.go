@@ -1,8 +1,9 @@
 package mysql
 
 import (
-	"gorm.io/gorm"
 	"hertz-session/pkg/consts"
+
+	"gorm.io/gorm"
 )
 
 type User struct {

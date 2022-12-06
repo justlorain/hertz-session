@@ -3,10 +3,11 @@
 package main
 
 import (
-	"github.com/cloudwego/hertz/pkg/app/server"
 	"hertz-session/biz/dal"
 	"hertz-session/biz/mw"
 	"hertz-session/pkg/render"
+
+	"github.com/cloudwego/hertz/pkg/app/server"
 )
 
 func Init(h *server.Hertz) {

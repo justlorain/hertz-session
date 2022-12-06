@@ -4,14 +4,15 @@ package user
 
 import (
 	"context"
-	"github.com/cloudwego/hertz/pkg/app"
-	hutils "github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/hertz-contrib/sessions"
 	"hertz-session/biz/dal/mysql"
 	"hertz-session/biz/model/user"
 	"hertz-session/pkg/consts"
 	"hertz-session/pkg/utils"
 	"net/http"
+
+	"github.com/cloudwego/hertz/pkg/app"
+	hutils "github.com/cloudwego/hertz/pkg/common/utils"
+	"github.com/hertz-contrib/sessions"
 )
 
 // Register .

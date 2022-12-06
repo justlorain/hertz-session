@@ -3,9 +3,10 @@
 package main
 
 import (
-	"github.com/cloudwego/hertz/pkg/app/server"
-	handler "hertz-session/biz/handler"
+	"hertz-session/biz/handler"
 	"hertz-session/biz/handler/user"
+
+	"github.com/cloudwego/hertz/pkg/app/server"
 )
 
 // customizeRegister registers customize routers.

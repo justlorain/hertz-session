@@ -1,10 +1,11 @@
 package mysql
 
 import (
+	"hertz-session/pkg/consts"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-	"hertz-session/pkg/consts"
 )
 
 var DB *gorm.DB

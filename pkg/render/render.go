@@ -2,14 +2,15 @@ package render
 
 import (
 	"context"
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/app/server"
-	hutils "github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/hertz-contrib/sessions"
 	"hertz-session/pkg/consts"
 	"hertz-session/pkg/utils"
 	"html/template"
 	"net/http"
+
+	"github.com/cloudwego/hertz/pkg/app"
+	"github.com/cloudwego/hertz/pkg/app/server"
+	hutils "github.com/cloudwego/hertz/pkg/common/utils"
+	"github.com/hertz-contrib/sessions"
 )
 
 func InitHTML(h *server.Hertz) {
