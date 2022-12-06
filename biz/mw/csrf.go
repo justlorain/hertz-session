@@ -2,6 +2,7 @@ package mw
 
 import (
 	"context"
+	"errors"
 	"hertz-session/pkg/consts"
 	"hertz-session/pkg/utils"
 	"net/http"
@@ -17,7 +18,7 @@ func InitCSRF(h *server.Hertz) {
 		csrf.WithKeyLookUp(consts.CSRFKeyLookUp),
 		csrf.WithNext(utils.IsLogout),
 		csrf.WithErrorFunc(func(ctx context.Context, c *app.RequestContext) {
-			c.String(http.StatusBadRequest, c.Errors.Last().Error())
+			c.String(http.StatusBadRequest, errors.New(consts.CSRFErr).Error())
 			c.Abort()
 		}),
 	))

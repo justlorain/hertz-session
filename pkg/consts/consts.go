@@ -21,5 +21,5 @@ const (
 	RegisterErr = "user already exists"
 	LoginErr    = "wrong username or password"
 	PageErr     = "please login first"
-	CSRFErr     = "missing token in form-data"
+	CSRFErr     = "csrf exception"
 )
