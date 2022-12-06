@@ -1,10 +1,11 @@
 package mw
 
 import (
+	"hertz-session/pkg/consts"
+
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"github.com/hertz-contrib/sessions"
 	"github.com/hertz-contrib/sessions/redis"
-	"hertz-session/pkg/consts"
 )
 
 func InitSession(h *server.Hertz) {

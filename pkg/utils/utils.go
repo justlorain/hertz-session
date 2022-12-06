@@ -5,8 +5,9 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
-	"github.com/cloudwego/hertz/pkg/app"
 	"hertz-session/pkg/consts"
+
+	"github.com/cloudwego/hertz/pkg/app"
 )
 
 // MD5 use md5 to encrypt strings

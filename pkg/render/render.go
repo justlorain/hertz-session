@@ -2,11 +2,12 @@ package render
 
 import (
 	"context"
-	"github.com/hertz-contrib/csrf"
 	"hertz-session/pkg/consts"
 	"hertz-session/pkg/utils"
 	"html/template"
 	"net/http"
+
+	"github.com/hertz-contrib/csrf"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"

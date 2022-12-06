@@ -2,12 +2,13 @@ package mw
 
 import (
 	"context"
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/app/server"
-	"github.com/hertz-contrib/csrf"
 	"hertz-session/pkg/consts"
 	"hertz-session/pkg/utils"
 	"net/http"
+
+	"github.com/cloudwego/hertz/pkg/app"
+	"github.com/cloudwego/hertz/pkg/app/server"
+	"github.com/hertz-contrib/csrf"
 )
 
 func InitCSRF(h *server.Hertz) {
