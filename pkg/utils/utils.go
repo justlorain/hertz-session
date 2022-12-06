@@ -21,9 +21,9 @@ func BuildMsg(msg string) string {
 	return fmt.Sprintf("%v", msg)
 }
 
-// IsLogin if user already login then return true
-func IsLogin(_ context.Context, c *app.RequestContext) bool {
-	if string(c.Cookie(consts.HertzSession)) != "" {
+// IsLogout if user already login then return false
+func IsLogout(_ context.Context, c *app.RequestContext) bool {
+	if string(c.Cookie(consts.HertzSession)) == "" {
 		return true
 	}
 	return false

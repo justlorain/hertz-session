@@ -9,7 +9,7 @@ const (
 	RedisPasswd      = ""
 	SessionSecretKey = "session-secret"
 	CSRFSecretKey    = "csrf-secret"
-	CSRFKeyLookUp    = "form: csrf"
+	CSRFKeyLookUp    = "form:csrf"
 	Username         = "username"
 	HertzSession     = "HERTZ-SESSION"
 	// root:114514@tcp(127.0.0.1:3306)/mytiktok?charset=utf8mb4&parseTime=True&loc=Local

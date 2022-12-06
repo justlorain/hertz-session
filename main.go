@@ -13,6 +13,7 @@ import (
 func Init(h *server.Hertz) {
 	dal.Init()
 	mw.InitSession(h)
+	mw.InitCSRF(h)
 	render.InitHTML(h)
 }
 

@@ -26,7 +26,7 @@ func InitHTML(h *server.Hertz) {
 
 	// register.html
 	h.GET("/register.html", func(ctx context.Context, c *app.RequestContext) {
-		if utils.IsLogin(ctx, c) {
+		if !utils.IsLogout(ctx, c) {
 			token = csrf.GetToken(c)
 		}
 		c.HTML(http.StatusOK, "register.html", hutils.H{
@@ -37,7 +37,7 @@ func InitHTML(h *server.Hertz) {
 
 	// login.html
 	h.GET("/login.html", func(ctx context.Context, c *app.RequestContext) {
-		if utils.IsLogin(ctx, c) {
+		if !utils.IsLogout(ctx, c) {
 			token = csrf.GetToken(c)
 		}
 		c.HTML(http.StatusOK, "login.html", hutils.H{
