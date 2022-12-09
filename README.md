@@ -1,6 +1,6 @@
 # hertz-session (dev-version)
 
-Refer to [here](https://github.com/cloudwego/hertz-examples/tree/main/bizdemo/hertz_session) for more information
+> Refer to [here](https://github.com/cloudwego/hertz-examples/tree/main/bizdemo/hertz_session) for more information
 
 ## Introduce
 
