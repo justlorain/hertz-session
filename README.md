@@ -49,12 +49,11 @@ This demo captures the [AdminLTE](https://github.com/ColorlibHQ/AdminLTE) login 
 ### Run MySQL and Redis docker
 
 ```bash
-cd bizdemo/hertz_session && docker-compose up
+docker-compose up
 ```
 
 ### Run demo
 
 ```bash
-cd bizdemo/hertz_session
-go build -o hertz_session && ./hertz_session
+go build -o hertz-session && ./hertz-session
 ```
