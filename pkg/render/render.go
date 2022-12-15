@@ -7,11 +7,10 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/hertz-contrib/csrf"
-
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
 	hutils "github.com/cloudwego/hertz/pkg/common/utils"
+	"github.com/hertz-contrib/csrf"
 	"github.com/hertz-contrib/sessions"
 )
 
@@ -49,17 +48,22 @@ func InitHTML(h *server.Hertz) {
 
 	// index.html
 	h.GET("/index.html", func(ctx context.Context, c *app.RequestContext) {
+		if !utils.IsLogout(ctx, c) {
+			token = csrf.GetToken(c)
+		}
 		session := sessions.Default(c)
 		username := session.Get(consts.Username)
 		if username == nil {
 			c.HTML(http.StatusOK, "index.html", hutils.H{
 				"message": utils.BuildMsg(consts.PageErr),
+				"token":   utils.BuildMsg(token),
 			})
 			c.Redirect(http.StatusMovedPermanently, []byte("/login.html"))
 			return
 		}
 		c.HTML(http.StatusOK, "index.html", hutils.H{
 			"message": utils.BuildMsg(username.(string)),
+			"token":   utils.BuildMsg(token),
 		})
 	})
 }

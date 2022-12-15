@@ -12,7 +12,7 @@ const (
 	CSRFKeyLookUp    = "form:csrf"
 	Username         = "username"
 	HertzSession     = "HERTZ-SESSION"
-	MySQLDefaultDSN  = "gorm:gorm@tcp(127.0.0.1:3306)/gorm?charset=utf8&parseTime=True&loc=Local"
+	MySQLDefaultDSN  = "root:114514@tcp(127.0.0.1:3306)/gorm?charset=utf8&parseTime=True&loc=Local"
 )
 
 // error msg
